@@ -1,9 +1,11 @@
 import React from 'react';
+import Wrapper from '../sections/Wrapper';
 
-export default function Compare() {
+function Compare() {
   return (
     <div>
       Compare
     </div>
   )
 }
+export default  Wrapper(Compare);
