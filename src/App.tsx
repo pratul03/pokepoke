@@ -1,9 +1,18 @@
+import BackGround from "./components/BackGround";
+import Footer from "./sections/Footer";
+import Navbar from "./sections/Navbar";
+import Wrapper from "./sections/Wrapper";
 function App() {
   return (
-    <div>
-      App
+    <div className="main-container">
+      <BackGround />
+      <div className="app">
+        <Navbar />
+        <Wrapper />
+        <Footer />
+      </div>
     </div>
-  )
+  );
 }
 
 export default App;
