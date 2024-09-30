@@ -1,5 +1,5 @@
 //@ts-nocheck
-const fetchImage = (context: string) => {
+const fetchImages = (context: string) => {
     const images = {};
     const cache = {};
 
@@ -16,10 +16,10 @@ const fetchImage = (context: string) => {
     return images;
 };
 
-export const images = fetchImage(
+export const images = fetchImages(
     require.context("../assets/pokemon", false, /\.(png|jpe?g|svg)$/)
 );
 
-export const defaultImages = fetchImage(
+export const defaultImages = fetchImages(
     require.context("../assets/default", false, /\.(png|jpe?g|svg)$/)
 );
