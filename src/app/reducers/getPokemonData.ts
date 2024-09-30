@@ -1,17 +1,45 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { genericPokemonType } from "../../utils/Types";
-import axios from 'axios';
+import { generatedPokemonType, genericPokemonType } from "../../utils/Types";
+import axios from "axios";
+import { defaultImages, images } from "../../utils/getPokemonImages";
+import { types } from "util";
 
 export const getPokemonData = createAsyncThunk(
   "pokemon/randomPokemon",
   async (pokemons: genericPokemonType[]) => {
     try {
-      const allPokemons:genericPokemonType[] = [];
+      const pokemonsData: generatedPokemonType[] = [];
       for await (const pokemon of pokemons) {
-        const { data } = await axios.get(pokemon.url);
-        console.log();
+        const {
+          data,
+        }: {
+          data: {
+            data: {
+              id: number;
+              types:{type: generatedPokemonType}[];
+          };
+          } = await axios.get (pokemon.url);
         
-        allPokemons.push(data);
+        const types = data.types.map(
+          ({ type: { name } }: { type: { name: string } }) => {
+            [name]:pokemonTypes[name]
+          });
+        let image: string = images[data.id];
+        if (!image) {
+          image = defaultImages[data.id];
+        }
+
+        if (image) {
+          pokemonsData.push({
+            name: [pokemon.name],
+            id: data.id,
+            image,
+            types,
+          })
+        }
+        console.log();
+
+      
       }
     } catch (error) {
       console.log(error);

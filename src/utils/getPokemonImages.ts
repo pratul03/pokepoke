@@ -17,9 +17,9 @@ const fetchImages = (context: string) => {
 };
 
 export const images = fetchImages(
-    require.context("../assets/pokemon", false, /\.(png|jpe?g|svg)$/)
+    require.context("../assets/pokemons/shiny", false, /\.(png|jpe?g|svg)$/)
 );
 
 export const defaultImages = fetchImages(
-    require.context("../assets/default", false, /\.(png|jpe?g|svg)$/)
+    require.context("../assets/pokemons/default", false, /\.(png|jpe?g|svg)$/)
 );
