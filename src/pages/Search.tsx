@@ -4,6 +4,7 @@ import { getInitialPokemonData } from "../app/reducers/getInitialPokemonData";
 import { getPokemonsData } from "../app/reducers/getPokemonsData";
 import Wrapper from "../sections/Wrapper";
 import PokemonCardGrid from "../components/PokemonCardGrid";
+import { debounce } from "../utils";
 
 function Search() {
   const dispatch = useAppDispatch();
@@ -38,6 +39,8 @@ function Search() {
       dispatch(getPokemonsData(randomPokemonId));
     }
   };
+
+  const handleChange = debounce((value: string) => getPokemon(value), 300);
   return (
     <>
       <div className="search">
@@ -45,7 +48,7 @@ function Search() {
           type="text"
           placeholder="Search Pokemon"
           className="pokemon-searchBar"
-          onChange={(e) => getPokemon(e.target.value)}
+          onChange={(e) => handleChange(e.target.value)}
         />
         <PokemonCardGrid pokemons={randomPokemons!} />
       </div>
