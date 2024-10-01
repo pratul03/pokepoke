@@ -3,6 +3,7 @@ import { generatedPokemonType, genericPokemonType } from "../../utils/Types";
 import axios from "axios";
 import { defaultImages, images } from "../../utils/getPokemonImages";
 import { types } from "util";
+import { pokemonTypes } from "../../utils/pokemonTypes";
 
 export const getPokemonData = createAsyncThunk(
   "pokemon/randomPokemon",
@@ -11,19 +12,20 @@ export const getPokemonData = createAsyncThunk(
       const pokemonsData: generatedPokemonType[] = [];
       for await (const pokemon of pokemons) {
         const {
-          data,
+          data
         }: {
           data: {
-            data: {
               id: number;
               types:{type: generatedPokemonType}[];
-          };
-          } = await axios.get (pokemon.url);
+          } = await axios.get(pokemon.url);
         
         const types = data.types.map(
-          ({ type: { name } }: { type: { name: string } }) => {
-            [name]:pokemonTypes[name]
-          });
+          ({ type: { name } }: { type: { name: string } }) => ({
+            [name]: pokemonTypes[name],
+          })
+        );
+        
+
         let image: string = images[data.id];
         if (!image) {
           image = defaultImages[data.id];
@@ -31,7 +33,7 @@ export const getPokemonData = createAsyncThunk(
 
         if (image) {
           pokemonsData.push({
-            name: [pokemon.name],
+            name: pokemon.name,
             id: data.id,
             image,
             types,
@@ -39,7 +41,6 @@ export const getPokemonData = createAsyncThunk(
         }
         console.log();
 
-      
       }
     } catch (error) {
       console.log(error);
