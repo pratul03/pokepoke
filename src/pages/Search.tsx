@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getInitialPokemonData } from "../app/reducers/getInitialPokemonData";
-import { getPokemonData } from "../app/reducers/getPokemonData";
+import { getPokemonsData } from "../app/reducers/getPokemonsData";
 import Wrapper from "../sections/Wrapper";
 
 function Search() {
+  
   const dispatch = useAppDispatch();
   const { allPokemon } = useAppSelector(({ pokemon }) => pokemon);
 
@@ -18,7 +19,7 @@ function Search() {
       const randomPokemonId = clonedPokemons
         .sort(() => Math.random() - Math.random())
         .slice(0, 20);
-      dispatch(getPokemonData(randomPokemonId));
+      dispatch(getPokemonsData(randomPokemonId));
     }
   }, [allPokemon, dispatch]);
 
