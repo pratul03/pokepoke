@@ -20,12 +20,22 @@ export const getPokemonsData = createAsyncThunk(
         } = await axios.get(pokemon.url);
         const types = data.types.map(
           ({ type: { name } }: { type: { name: string } }) => ({
-            [name]: pokemonTypes[name],
+            [name]: {
+              image: pokemonTypes[name as keyof typeof pokemonTypes].image,
+              strength:
+                pokemonTypes[name as keyof typeof pokemonTypes].strength,
+              weaknesses:
+                pokemonTypes[name as keyof typeof pokemonTypes].weakness, // Correct the field name here
+              resistance:
+                pokemonTypes[name as keyof typeof pokemonTypes].resistance,
+              vulnerable:
+                pokemonTypes[name as keyof typeof pokemonTypes].vulnerable,
+            },
           })
         );
-        let image: string = images[data.id];
+        let image: string = images[data.id as keyof typeof images];
         if (!image) {
-          image = defaultImages[data.id];
+          image = defaultImages[data.id as keyof typeof defaultImages];
         }
         if (image) {
           pokemonsData.push({
