@@ -4,4 +4,21 @@
   max-width: 100%;
   color: white;
   text-transform: uppercase;
+  .pokemon-searchBar{
+    width: 90%;
+    height: 9%;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    background-color: rgba($color: #ffffff, $alpha: 0.125);
+    margin-top: 20px;
+    margin-left:60px ;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border: none;
+    color: white;
+    box-shadow: rgba($color: #000000, $alpha: 0.35) 0px 5px 15px;
+    &::-webkit-input-placeholder{
+        color: rgba($color: #ffffff, $alpha: 0.779);
+    }
+  }
 }

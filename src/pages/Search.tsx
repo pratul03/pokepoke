@@ -6,9 +6,10 @@ import Wrapper from "../sections/Wrapper";
 import PokemonCardGrid from "../components/PokemonCardGrid";
 
 function Search() {
-  
   const dispatch = useAppDispatch();
-  const { allPokemon, randomPokemons } = useAppSelector(({ pokemon }) => pokemon);
+  const { allPokemon, randomPokemons } = useAppSelector(
+    ({ pokemon }) => pokemon
+  );
 
   useEffect(() => {
     dispatch(getInitialPokemonData());
@@ -27,9 +28,13 @@ function Search() {
   return (
     <>
       <div className="search">
-        <input type="text" placeholder="Search Pokemon" />
+        <input
+          type="text"
+          placeholder="Search Pokemon"
+          className="pokemon-searchBar"
+        />
         <PokemonCardGrid pokemons={randomPokemons!} />
-    </div>
+      </div>
     </>
   );
 }
