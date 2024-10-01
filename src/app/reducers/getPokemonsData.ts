@@ -25,7 +25,7 @@ export const getPokemonsData = createAsyncThunk(
               strength:
                 pokemonTypes[name as keyof typeof pokemonTypes].strength,
               weaknesses:
-                pokemonTypes[name as keyof typeof pokemonTypes].weakness, // Correct the field name here
+                pokemonTypes[name as keyof typeof pokemonTypes].weakness,
               resistance:
                 pokemonTypes[name as keyof typeof pokemonTypes].resistance,
               vulnerable:

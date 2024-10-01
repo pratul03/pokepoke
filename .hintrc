@@ -16,6 +16,7 @@
       {
         "list": "off"
       }
-    ]
+    ],
+    "compat-api/html": "off"
   }
 }

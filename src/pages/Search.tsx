@@ -28,7 +28,7 @@ function Search() {
     <>
       <div className="search">
         <input type="text" placeholder="Search Pokemon" />
-        <PokemonCardGrid pokemons={randomPokemons} />
+        <PokemonCardGrid pokemons={randomPokemons!} />
     </div>
     </>
   );
