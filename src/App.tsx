@@ -8,9 +8,38 @@ import Search from "./pages/Search";
 import "./scss/index.scss";
 import Footer from "./sections/Footer";
 import Navbar from "./sections/Navbar";
-import Wrapper from "./sections/Wrapper";
+import { ToastContainer, ToastOptions, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
+import { useEffect } from "react";
+import { clearToast } from "./app/slices/AppSlice";
 
 function App() {
+  const { toasts } = useAppSelector(({ app }) => app);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (toasts.length) {
+      const toastOptions: ToastOptions = {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        className: "custom-toast",
+        bodyClassName: "custom-toast-body",
+        progressClassName: "custom-toast-progress",
+      };
+      toasts.forEach((message: string) => {
+        toast(message, toastOptions);
+      });
+      dispatch(clearToast());
+    }
+  }, [toasts, dispatch]);
+
   return (
     <div className="main-container">
       <BackGround />
@@ -26,6 +55,7 @@ function App() {
             <Route element={<Navigate to="/pokemon/1" />} path="*" />
           </Routes>
           <Footer />
+          <ToastContainer />
         </div>
       </BrowserRouter>
     </div>

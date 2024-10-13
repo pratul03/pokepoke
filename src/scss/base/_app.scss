@@ -29,14 +29,31 @@
     }
 }
 
-// ::-webkit-scrollbar{
-//     background-color: transparent;
-//     width: 0.4rem;
-//     border-radius: 6px;
-//     &-thumb{
-//         background-color: rgba(219, 219, 219, 0.550);
-//     }
-// }
+.custom-toast {
+  padding: 8px 16px !important;
+  text-align: center !important;
+  background-color: #1a1a1a !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+  opacity: 0.95 !important;
+}
+
+.custom-toast-body {
+  padding: 8px !important;
+  line-height: 1.4 !important;
+}
+
+.custom-toast-progress {
+  height: 4px !important;
+  border-radius: 4px !important;
+  background-color: #ff5f56 !important;
+  transition: width 0.4s ease !important;
+}
+
 
 ::-webkit-scrollbar {
   width: 0.4rem;  // Adjust the width of the scrollbar
