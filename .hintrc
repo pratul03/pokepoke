@@ -17,6 +17,7 @@
         "list": "off"
       }
     ],
-    "compat-api/html": "off"
+    "compat-api/html": "off",
+    "axe/name-role-value": "off"
   }
 }
